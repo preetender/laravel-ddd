@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "8b4710d67cc622ce53a661fd4e26fec0",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1097,6 +1097,43 @@
                 "type"
             ],
             "time": "2015-07-25T16:39:46+00:00"
+        },
+        {
+            "name": "preetender/laravel-qs-api",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/preetender/laravel-qs-api.git",
+                "reference": "698a0dcf840125b0eb2a468d6894355df918f54b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/preetender/laravel-qs-api/zipball/698a0dcf840125b0eb2a468d6894355df918f54b",
+                "reference": "698a0dcf840125b0eb2a468d6894355df918f54b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^5.8",
+                "illuminate/support": "^5.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Preetender\\QueryString\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "César Augusto",
+                    "email": "cesinhagutierres@gmail.com"
+                }
+            ],
+            "description": "Consultas complexas via uri",
+            "time": "2019-05-01T23:10:10+00:00"
         },
         {
             "name": "psr/container",
