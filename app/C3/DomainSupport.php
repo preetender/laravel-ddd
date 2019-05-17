@@ -33,6 +33,11 @@ class DomainSupport
         $this->config = collect(config('domain'));
     }
 
+    /**
+     * Registrar rotas
+     * 
+     * @return void
+     */
     public function loadRoutes(): void
     {
         //
@@ -43,9 +48,7 @@ class DomainSupport
         }
 
         foreach ($domains as $name => $namespace) {
-            //
-            // Routes
-            //
+
             $web = str_finish($this->getPathByDomain($name, 'routes'), $this->config->get('routes')['web']);
             $api = str_finish($this->getPathByDomain($name, 'routes'), $this->config->get('routes')['api']);
 
@@ -72,9 +75,67 @@ class DomainSupport
     }
 
     /**
-     *
+     * Carregar arquivos de configuração do dominio.
+     * 
+     * @return array
      */
-    private function getPathByDomain(string $name, $struct = 'entities')
+    public function loadConfigs(): array
+    {
+        //
+        $domains = $this->config->get('register');
+
+        if (count($domains) <= 0) {
+            throw new \Error('Não existem dominios registrados.');
+        }
+
+        $files = [];
+
+        foreach ($domains as $name => $namespace) {
+            $root_path = $this->config->get('base_path') . '/' . ucfirst($name);
+            $config = base_path($root_path . '/' . 'config.php');
+
+            if (!file_exists($config)) continue;
+
+            $files[$name] = $config;
+        }
+
+        return $files;
+    }
+
+    /**
+     * Carregar migrations do dominio
+     * 
+     * @return array
+     */
+    public function loadMigrations(): array
+    {
+        //
+        $domains = $this->config->get('register');
+
+        if (count($domains) <= 0) {
+            throw new \Error('Não existem dominios registrados.');
+        }
+
+        $files = [];
+
+        foreach ($domains as $name => $namespace) {
+            // $root_path = $this->config->get('base_path') . '/' . ucfirst($name);
+            $migrations = base_path($this->getPathByDomain($name, 'migrations'));
+
+            if (!is_dir($migrations)) continue;
+
+            $files[$name] = $migrations;
+        }
+
+        return $files;
+    }
+
+    /**
+     * Obter caminho relativo
+     * 
+     * @return string
+     */
+    private function getPathByDomain(string $name, $struct = 'entities'): string
     {
         if (!array_key_exists($name, $this->config['register'])) {
             throw new \Error("Dominio $name, não foi registrado.");

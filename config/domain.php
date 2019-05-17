@@ -6,6 +6,7 @@ return [
 
     'register' => [
         'auth' => 'App\Domain\Auth',
+        'profiles' => 'App\Domain\Profiles'
     ],
 
     'struct' => [

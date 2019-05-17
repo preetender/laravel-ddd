@@ -5,10 +5,11 @@ namespace App\Domain\Auth\Entities;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Domain\Auth\Traits\UserObservable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, UserObservable;
 
     /**
      * The attributes that are mass assignable.
