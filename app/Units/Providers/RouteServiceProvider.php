@@ -18,8 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Domain';
-    // protected $namespace = 'App\Units\Http\Controllers';
+    protected $namespace = 'App\Units\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
