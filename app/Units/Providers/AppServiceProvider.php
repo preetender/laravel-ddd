@@ -3,7 +3,8 @@
 namespace App\Units\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Support\DomainSupport;
+use App\C3\DomainSupport;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Carbon::setLocale('pt-br');
     }
 }

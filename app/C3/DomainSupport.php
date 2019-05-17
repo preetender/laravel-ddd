@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support;
+namespace App\C3;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
