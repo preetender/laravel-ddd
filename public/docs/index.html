@@ -48,6 +48,59 @@
 <p>Welcome to the generated API reference.
 <a href="http://imatchs.local/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
+<h1>Definições</h1>
+<p>Nessa seção veremos como configurar nosso cliente http.</p>
+<table>
+<thead>
+<tr>
+<th>Cabeçalho</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept</td>
+<td>application/json</td>
+</tr>
+</tbody>
+</table>
+<h1>Consultas</h1>
+<p>Para realizar consultas avançadas na api estamos utilizando um pacote <a href="https://github.com/preetender/laravel-qs-api">laravel-qs-api</a>.</p>
+<h1>Erros</h1>
+<table>
+<thead>
+<tr>
+<th>Codigo do Erro</th>
+<th>Estrutura Json</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><code>{"message": "string"}</code></td>
+</tr>
+<tr>
+<td>401</td>
+<td><code>{"message": "string"}</code></td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>{"message": "string"}</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>{"message": "string"}</code></td>
+</tr>
+<tr>
+<td>422</td>
+<td><code>{"message": "string", "errors": []}</code></td>
+</tr>
+<tr>
+<td>500</td>
+<td><code>{"message": "string"}</code></td>
+</tr>
+</tbody>
+</table>
 <h1>Inicio</h1>
 <!-- START_5ef90dd4846f0d2902b89354bf5c42bb -->
 <h2>Autenticação</h2>
@@ -57,7 +110,7 @@
 <pre><code class="language-bash">curl -X POST "http://imatchs.local/api/auth" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"username":"nihil","password":"aut"}'
+    -d '{"username":"in","password":"adipisci"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://imatchs.local/api/auth");
 
@@ -67,8 +120,8 @@ let headers = {
 }
 
 let body = {
-    "username": "nihil",
-    "password": "aut"
+    "username": "in",
+    "password": "adipisci"
 }
 
 fetch(url, {
@@ -84,25 +137,6 @@ fetch(url, {
 <pre><code class="language-json">{
     "token": "hash",
     "expires_in": "timestamp"
-}</code></pre>
-<blockquote>
-<p>Example response (400):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "message": ""
-}</code></pre>
-<blockquote>
-<p>Example response (422):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "errors": {
-        "username": [
-            "a"
-        ],
-        "password": [
-            "a"
-        ]
-    }
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/auth</code></p>
@@ -121,12 +155,13 @@ fetch(url, {
 <td>username</td>
 <td>string</td>
 <td>required</td>
+<td>Usuario</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>required</td>
-<td>digits:6</td>
+<td>Senha de acesso</td>
 </tr>
 </tbody>
 </table>
@@ -139,7 +174,7 @@ fetch(url, {
 <pre><code class="language-bash">curl -X POST "http://imatchs.local/api/auth/register" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"name":"aspernatur","email":"soluta","avatar":"nihil","password":"sed","password_confirmation":"cum"}'
+    -d '{"name":"eos","email":"explicabo","avatar":"sunt","password":"consequatur","password_confirmation":"aut"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://imatchs.local/api/auth/register");
 
@@ -149,11 +184,11 @@ let headers = {
 }
 
 let body = {
-    "name": "aspernatur",
-    "email": "soluta",
-    "avatar": "nihil",
-    "password": "sed",
-    "password_confirmation": "cum"
+    "name": "eos",
+    "email": "explicabo",
+    "avatar": "sunt",
+    "password": "consequatur",
+    "password_confirmation": "aut"
 }
 
 fetch(url, {
@@ -184,26 +219,31 @@ fetch(url, {
 <td>name</td>
 <td>string</td>
 <td>required</td>
+<td>Nome</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
 <td>required</td>
+<td>Email</td>
 </tr>
 <tr>
 <td>avatar</td>
 <td>file</td>
 <td>optional</td>
+<td>Avatar</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>required</td>
+<td>Senha de acesso</td>
 </tr>
 <tr>
 <td>password_confirmation</td>
 <td>string</td>
 <td>required</td>
+<td>Repetir senha</td>
 </tr>
 </tbody>
 </table>

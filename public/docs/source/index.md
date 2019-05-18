@@ -21,6 +21,29 @@ Welcome to the generated API reference.
 [Get Postman Collection](http://imatchs.local/docs/collection.json)
 
 <!-- END_INFO -->
+# Definições
+
+Nessa seção veremos como configurar nosso cliente http.
+
+| Cabeçalho | Valor            |
+| --------- | ---------------- |
+| Accept    | application/json |
+
+# Consultas
+
+Para realizar consultas avançadas na api estamos utilizando um pacote [laravel-qs-api](https://github.com/preetender/laravel-qs-api).
+
+# Erros
+
+| Codigo do Erro | Estrutura Json                        |
+| -------------- | ------------------------------------- |
+| 400            | `{"message": "string"}`               |
+| 401            | `{"message": "string"}`               |
+| 403            | `{"message": "string"}`               |
+| 404            | `{"message": "string"}`               |
+| 422            | `{"message": "string", "errors": []}` |
+| 500            | `{"message": "string"}`               |
+
 
 #Inicio
 <!-- START_5ef90dd4846f0d2902b89354bf5c42bb -->
@@ -32,7 +55,7 @@ Welcome to the generated API reference.
 curl -X POST "http://imatchs.local/api/auth" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"username":"nihil","password":"aut"}'
+    -d '{"username":"in","password":"adipisci"}'
 
 ```
 
@@ -45,8 +68,8 @@ let headers = {
 }
 
 let body = {
-    "username": "nihil",
-    "password": "aut"
+    "username": "in",
+    "password": "adipisci"
 }
 
 fetch(url, {
@@ -68,29 +91,6 @@ fetch(url, {
     "expires_in": "timestamp"
 }
 ```
-> Example response (400):
-
-
-```json
-{
-    "message": ""
-}
-```
-> Example response (422):
-
-
-```json
-{
-    "errors": {
-        "username": [
-            "a"
-        ],
-        "password": [
-            "a"
-        ]
-    }
-}
-```
 
 ### HTTP Request
 `POST api/auth`
@@ -99,8 +99,8 @@ fetch(url, {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    username | string |  required  | 
-    password | string |  required  | digits:6
+    username | string |  required  | Usuario
+    password | string |  required  | Senha de acesso
 
 <!-- END_5ef90dd4846f0d2902b89354bf5c42bb -->
 
@@ -113,7 +113,7 @@ Parameter | Type | Status | Description
 curl -X POST "http://imatchs.local/api/auth/register" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"name":"aspernatur","email":"soluta","avatar":"nihil","password":"sed","password_confirmation":"cum"}'
+    -d '{"name":"eos","email":"explicabo","avatar":"sunt","password":"consequatur","password_confirmation":"aut"}'
 
 ```
 
@@ -126,11 +126,11 @@ let headers = {
 }
 
 let body = {
-    "name": "aspernatur",
-    "email": "soluta",
-    "avatar": "nihil",
-    "password": "sed",
-    "password_confirmation": "cum"
+    "name": "eos",
+    "email": "explicabo",
+    "avatar": "sunt",
+    "password": "consequatur",
+    "password_confirmation": "aut"
 }
 
 fetch(url, {
@@ -157,11 +157,11 @@ fetch(url, {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    name | string |  required  | 
-    email | string |  required  | 
-    avatar | file |  optional  | 
-    password | string |  required  | 
-    password_confirmation | string |  required  | 
+    name | string |  required  | Nome
+    email | string |  required  | Email
+    avatar | file |  optional  | Avatar
+    password | string |  required  | Senha de acesso
+    password_confirmation | string |  required  | Repetir senha
 
 <!-- END_2e1c96dcffcfe7e0eb58d6408f1d619e -->
 

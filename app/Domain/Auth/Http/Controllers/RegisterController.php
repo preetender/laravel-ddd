@@ -12,11 +12,11 @@ class RegisterController extends Controller
      * 
      * @group Inicio
      * 
-     * @bodyParam name string required
-     * @bodyParam email string required
-     * @bodyParam avatar file
-     * @bodyParam password string required
-     * @bodyParam password_confirmation string required
+     * @bodyParam name string required Nome
+     * @bodyParam email string required Email
+     * @bodyParam avatar file Avatar
+     * @bodyParam password string required Senha de acesso
+     * @bodyParam password_confirmation string required Repetir senha
      * 
      * @response 201 {}
      */
