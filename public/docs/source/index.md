@@ -55,7 +55,7 @@ Para realizar consultas avançadas na api estamos utilizando um pacote [laravel-
 curl -X POST "http://imatchs.local/api/auth" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"username":"in","password":"adipisci"}'
+    -d '{"username=a":"natus","password=b":"ut"}'
 
 ```
 
@@ -68,8 +68,8 @@ let headers = {
 }
 
 let body = {
-    "username": "in",
-    "password": "adipisci"
+    "username=a": "natus",
+    "password=b": "ut"
 }
 
 fetch(url, {
@@ -99,8 +99,8 @@ fetch(url, {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    username | string |  required  | Usuario
-    password | string |  required  | Senha de acesso
+    username=a | string |  required  | Usuario
+    password=b | string |  required  | Senha de acesso
 
 <!-- END_5ef90dd4846f0d2902b89354bf5c42bb -->
 
@@ -113,7 +113,7 @@ Parameter | Type | Status | Description
 curl -X POST "http://imatchs.local/api/auth/register" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"name":"eos","email":"explicabo","avatar":"sunt","password":"consequatur","password_confirmation":"aut"}'
+    -d '{"name":"adipisci","email":"quisquam","avatar":"voluptas","password":"iure","password_confirmation":"officiis"}'
 
 ```
 
@@ -126,11 +126,11 @@ let headers = {
 }
 
 let body = {
-    "name": "eos",
-    "email": "explicabo",
-    "avatar": "sunt",
-    "password": "consequatur",
-    "password_confirmation": "aut"
+    "name": "adipisci",
+    "email": "quisquam",
+    "avatar": "voluptas",
+    "password": "iure",
+    "password_confirmation": "officiis"
 }
 
 fetch(url, {

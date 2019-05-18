@@ -2,10 +2,10 @@
 
 namespace App\Domain\Auth\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Units\Http\Controllers\Controller;
-use App\Domain\Auth\Http\Validations\LoginRequest;
 
-class LoginController extends Controller
+class LoginWithProviderController extends Controller
 {
     /**
      * Autenticação
@@ -16,8 +16,8 @@ class LoginController extends Controller
      * 
      * @responseFile 201 responses/inicio/auth.201.json
      */
-    public function __invoke(LoginRequest $request)
+    public function __invoke(Request $request, string $provider)
     {
-        return $request->all();
+        dd(func_get_args());
     }
 }

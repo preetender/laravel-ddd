@@ -4,6 +4,7 @@ namespace App\Domain\Auth\Http\Controllers;
 
 use App\Units\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Domain\Auth\Http\Validations\RegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -20,7 +21,7 @@ class RegisterController extends Controller
      * 
      * @response 201 {}
      */
-    public function __invoke(Request $request)
+    public function __invoke(RegisterRequest $request)
     {
         return $request->all();
     }
