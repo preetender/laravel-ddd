@@ -1,4 +1,6 @@
 <?php
+use Laravel\Socialite\Two\FacebookProvider;
+use Laravel\Socialite\Two\GoogleProvider;
 
 return [
     /**
@@ -7,7 +9,23 @@ return [
      |
      */
     'providers' => [
-        'facebook',
-        'google'
+        'facebook' => [
+            'instance' => FacebookProvider::class,
+            'fields' => [
+                'id' => null,
+                'name' => null,
+                'email' => null,
+                'avatar' => 'avatar_original'
+            ]
+        ],
+        'google' => [
+            'instance' => GoogleProvider::class,
+            'fields' => [
+                'id' => null,
+                'name' => null,
+                'email' => null,
+                'avatar' => null
+            ]
+        ]
     ]
 ];

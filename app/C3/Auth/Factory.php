@@ -3,6 +3,7 @@
 namespace App\C3\Auth;
 
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\User;
 
 final class Factory
 {
@@ -33,7 +34,7 @@ final class Factory
     public function __construct(string $provider)
     {
         $this->config = (object)config("domain::auth");
-        $this->providers = $this->config->providers;
+        $this->providers = collect($this->config->providers);
 
         if (!$this->hasProvider($provider)) {
             throw new \Exception("Provedor $provider não foi configurado.");
@@ -44,8 +45,9 @@ final class Factory
 
     /**
      * @param string $provider
+     * @return Factory
      */
-    public static function build(string $provider)
+    public static function build(string $provider): Factory
     {
         return new self($provider);
     }
@@ -53,20 +55,34 @@ final class Factory
     /**
      * Obter informações do usuario autenticado.
      * 
-     * @return mixed
+     * @return array
      */
-    public function retrieveByToken(string $token, array $fields = [])
+    public function retrieveByToken(string $token): array
     {
         $user = $this->provider->userFromToken($token);
-        $data = [];
-        if (count($fields) > 0) {
-            foreach ($fields as $field) {
-                $data[$field] = $user->{$field};
-            }
-        } else {
-            $data = $user;
-        }
+
+        // 
+        return $this->mapTo($user);
+    }
+
+    /**
+     * obtem campos de acordo com a configuração do provedor.
+     * 
+     * @param User
+     * @return array
+     */
+    public function mapTo(User $user): array
+    {
+        $provider = $this->providers->where('instance', get_class($this->provider))->first();
         //
+        $fields = $provider['fields'];
+        //
+        $data = [];
+
+        foreach ($fields as $field => $renamed) {
+            $data[$field] = $user->{$renamed ?? $field};
+        }
+
         return $data;
     }
 
@@ -78,6 +94,6 @@ final class Factory
      */
     private function hasProvider(string $provider): bool
     {
-        return in_array($provider, $this->providers);
+        return $this->providers->has($provider);
     }
 }
