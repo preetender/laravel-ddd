@@ -1,0 +1,5 @@
+{
+    "token": "hash",
+    "id": "id do usuario",
+    "expires_in": "timestamp com validade do token"
+}

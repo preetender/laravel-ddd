@@ -4,23 +4,27 @@ namespace App\Domain\Auth\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Units\Http\Controllers\Controller;
-use App\C3\Auth\Factory;
+use App\C3\Auth\WithProvider;
 use App\Domain\Auth\Entities\User;
 use Illuminate\Support\Facades\DB;
+use App\Domain\Auth\Http\Validations\LoginProviderRequest;
 
 class LoginWithProviderController extends Controller
 {
     /**
      * Autenticação via provedor
      * 
-     * @group Inicio
-     * @bodyParam token string required Token
+     * Autenticação via token com provedores, acesse no insomnia inicio -> login via provedor.
      * 
-     * @responseFile 201 responses/inicio/auth.201.json
+     * @group Inicio
+     * @description Teste
+     * @bodyParam token string required Token
+     * @responseFile 201 responses/inicio/auth-provider/201.json
+     * @responseFile 422 responses/inicio/auth-provider/422.json
      */
-    public function __invoke(Request $request, string $provider)
+    public function __invoke(LoginProviderRequest $request, string $provider)
     {
-        $factory = Factory::build($provider);
+        $factory = WithProvider::build($provider);
 
         $user = (object)$factory->retrieveByToken($request->input('token'));
         $user->type = 'client';

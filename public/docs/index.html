@@ -110,7 +110,7 @@
 <pre><code class="language-bash">curl -X POST "http://imatchs.local/api/auth" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"username=a":"natus","password=b":"ut"}'
+    -d '{"username":"iste","password":"fugit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://imatchs.local/api/auth");
 
@@ -120,8 +120,8 @@ let headers = {
 }
 
 let body = {
-    "username=a": "natus",
-    "password=b": "ut"
+    "username": "iste",
+    "password": "fugit"
 }
 
 fetch(url, {
@@ -136,7 +136,17 @@ fetch(url, {
 </blockquote>
 <pre><code class="language-json">{
     "token": "hash",
-    "expires_in": "timestamp"
+    "id": "id do usuario",
+    "expires_in": "timestamp com validade do token"
+}</code></pre>
+<blockquote>
+<p>Example response (422):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "errors": {
+        "username": [],
+        "password": []
+    }
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/auth</code></p>
@@ -152,13 +162,13 @@ fetch(url, {
 </thead>
 <tbody>
 <tr>
-<td>username=a</td>
+<td>username</td>
 <td>string</td>
 <td>required</td>
 <td>Usuario</td>
 </tr>
 <tr>
-<td>password=b</td>
+<td>password</td>
 <td>string</td>
 <td>required</td>
 <td>Senha de acesso</td>
@@ -166,6 +176,73 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_5ef90dd4846f0d2902b89354bf5c42bb -->
+<!-- START_8d2fd3407136553d2e1f5b88cb09f214 -->
+<h2>Autenticação via provedor</h2>
+<p>Autenticação via token com provedores.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://imatchs.local/api/auth/with-1" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d '{"token":"provident"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://imatchs.local/api/auth/with-1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = {
+    "token": "provident"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (201):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "token": "hash",
+    "id": "id do usuario",
+    "expires_in": "timestamp com validade do token"
+}</code></pre>
+<blockquote>
+<p>Example response (422):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "errors": {
+        "token": []
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/auth/with-{provider}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>required</td>
+<td>Token</td>
+</tr>
+</tbody>
+</table>
+<!-- END_8d2fd3407136553d2e1f5b88cb09f214 -->
 <!-- START_2e1c96dcffcfe7e0eb58d6408f1d619e -->
 <h2>Cadastro de usuários</h2>
 <blockquote>
@@ -174,7 +251,7 @@ fetch(url, {
 <pre><code class="language-bash">curl -X POST "http://imatchs.local/api/auth/register" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -d '{"name":"adipisci","email":"quisquam","avatar":"voluptas","password":"iure","password_confirmation":"officiis"}'
+    -d '{"name":"ducimus","email":"numquam","avatar":"amet","password":"odit","password_confirmation":"asperiores"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://imatchs.local/api/auth/register");
 
@@ -184,11 +261,11 @@ let headers = {
 }
 
 let body = {
-    "name": "adipisci",
-    "email": "quisquam",
-    "avatar": "voluptas",
-    "password": "iure",
-    "password_confirmation": "officiis"
+    "name": "ducimus",
+    "email": "numquam",
+    "avatar": "amet",
+    "password": "odit",
+    "password_confirmation": "asperiores"
 }
 
 fetch(url, {

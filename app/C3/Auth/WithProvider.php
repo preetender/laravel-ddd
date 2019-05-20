@@ -5,7 +5,7 @@ namespace App\C3\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\User;
 
-final class Factory
+final class WithProvider
 {
     /**
      * Configurações do dominio Auth.

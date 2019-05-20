@@ -11,8 +11,9 @@ class RegisterController extends Controller
     /**
      * Cadastro de usuários
      * 
-     * @group Inicio
+     * Cadastro de usuario básico, navegue no insominia para mais informações inicio -> cadastro.
      * 
+     * @group Inicio
      * @bodyParam name string required Nome
      * @bodyParam email string required Email
      * @bodyParam avatar file Avatar
@@ -20,6 +21,8 @@ class RegisterController extends Controller
      * @bodyParam password_confirmation string required Repetir senha
      * 
      * @response 201 {}
+     * @response 400 {}
+     * @response 422 {}
      */
     public function __invoke(RegisterRequest $request)
     {
